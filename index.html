@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- 
+        SQS Platform (Student Questions Site)
+        Front-End Educational Q&A Platform
+        Dark Theme Modern UI/UX
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQS Platform - Student Questions Site</title>
+    
+    <!-- Google Fonts - Arabic Support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background Particles -->
+    <div id="particles-container" class="particles-container"></div>
+    
+    <!-- Animated Gradient Background -->
+    <div class="gradient-bg"></div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>SQS Platform</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="nav-link" data-page="welcome" id="navHome">الرئيسية</a>
+                <a href="#" class="nav-link" data-page="interactiveChat" id="navInteractiveChat" style="display: none;">الدردشة التفاعلية</a>
+                <a href="#" class="nav-link" data-page="myAccount" id="navMyAccount" style="display: none;">حسابي</a>
+                <a href="#" class="nav-link" data-page="login" id="navLogin">تسجيل الدخول</a>
+                <a href="#" class="nav-link" data-page="signup" id="navSignup">إنشاء حساب</a>
+            </div>
+            <div class="nav-user" id="navUser" style="display: none;">
+                <span id="userName">المستخدم</span>
+                <button class="btn-logout" id="btnLogout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== WELCOME / LANDING PAGE ==================== -->
+    <section id="welcomePage" class="page active">
+        <div class="container">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>تحت اشراف دعم الموهوبين بمحافظة البحيرة</span>
+                    </div>
+                    <h1 class="hero-title">
+                        SQS Platform
+                        <span class="gradient-text">Student Questions Site</span>
+                    </h1>
+                    <p class="hero-description">
+                        منصة تفاعلية تجمع الطلاب والمعلمين في بيئة تعليمية متكاملة، 
+                        حيث يمكنك طرح الأسئلة والحصول على الإجابات من معلميك وزملائك بسهولة ويسر
+                    </p>
+                    <div class="hero-buttons" id="welcomeButtons">
+                        <button class="btn btn-primary btn-glow" data-navigate="login">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>تسجيل الدخول</span>
+                        </button>
+                        <button class="btn btn-secondary" data-navigate="signup">
+                            <i class="fas fa-user-plus"></i>
+                            <span>إنشاء حساب جديد</span>
+                        </button>
+                    </div>
+                    <div class="hero-buttons" id="loggedInButtons" style="display: none;">
+                        <button class="btn btn-primary btn-glow" data-navigate="interactiveChat">
+                            <i class="fas fa-comments"></i>
+                            <span>الدردشة التفاعلية</span>
+                        </button>
+                        <button class="btn btn-secondary" data-navigate="myAccount">
+                            <i class="fas fa-user-circle"></i>
+                            <span>حسابي</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-icons">
+                        <i class="fas fa-book-open icon-float icon-1"></i>
+                        <i class="fas fa-chalkboard-teacher icon-float icon-2"></i>
+                        <i class="fas fa-laptop icon-float icon-3"></i>
+                        <i class="fas fa-lightbulb icon-float icon-4"></i>
+                        <i class="fas fa-atom icon-float icon-5"></i>
+                    </div>
+                    <div class="hero-illustration">
+                        <div class="edu-circle circle-1"></div>
+                        <div class="edu-circle circle-2"></div>
+                        <div class="edu-circle circle-3"></div>
+                        <i class="fas fa-graduation-cap main-icon"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Features Section -->
+            <div class="features-section">
+                <h2 class="section-title">مميزات المنصة</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>محادثة تفاعلية</h3>
+                        <p>تواصل مباشر مع المعلمين والطلاب واطرح أسئلتك بكل سهولة</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>صفوف منفصلة</h3>
+                        <p>كل مادة لها صفحة دردشة منفصلة ومنظمة</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>جميع المواد</h3>
+                        <p>جميع المواد الدراسية وفق النظام التعليمي المصري</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>بيئة آمنة</h3>
+                        <p>بيئة تعليمية آمنة وموثوقة للطلاب والمعلمين</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LOGIN PAGE ==================== -->
+    <section id="loginPage" class="page">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <div class="auth-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h2>تسجيل الدخول</h2>
+                        <p>أهلاً بك مجدداً في SQS Platform</p>
+                    </div>
+                    
+                    <form id="loginForm" class="auth-form">
+                        <!-- Role Selection -->
+                        <div class="role-selection">
+                            <label class="role-label">اختر نوع الحساب</label>
+                            <div class="role-options">
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="student" checked>
+                                    <div class="role-card">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>طالب</span>
+                                    </div>
+                                </label>
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="teacher">
+                                    <div class="role-card">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                        <span>معلم</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="loginEmail">
+                                <i class="fas fa-envelope"></i>
+                                البريد الإلكتروني
+                            </label>
+                            <input 
+                                type="email" 
+                                id="loginEmail" 
+                                name="email" 
+                                placeholder="أدخل بريدك الإلكتروني"
+                                required
+                            >
+                            <span class="error-message" id="loginEmailError"></span>
+                        </div>
+                        
+                        <!-- Password Input -->
+                        <div class="form-group">
+                            <label for="loginPassword">
+                                <i class="fas fa-lock"></i>
+                                كلمة المرور
+                            </label>
+                            <div class="password-input">
+                                <input 
+                                    type="password" 
+                                    id="loginPassword" 
+                                    name="password" 
+                                    placeholder="أدخل كلمة المرور"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="loginPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="loginPasswordError"></span>
+                        </div>
+                        
+                        <!-- Remember Me & Forgot Password -->
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="remember">
+                                <span>تذكرني</span>
+                            </label>
+                            <a href="#" class="forgot-password">نسيت كلمة المرور؟</a>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-glow btn-full">
+                            <i class="fas fa-sign-in-alt"></i>
+                            <span>تسجيل الدخول</span>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>ليس لديك حساب؟ <a href="#" data-navigate="signup">إنشاء حساب جديد</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SIGNUP PAGE ==================== -->
+    <section id="signupPage" class="page">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card">
+                    <div class="auth-header">
+                        <div class="auth-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h2>إنشاء حساب جديد</h2>
+                        <p>انضم إلى SQS Platform</p>
+                    </div>
+                    
+                    <form id="signupForm" class="auth-form">
+                        <!-- Role Selection -->
+                        <div class="role-selection">
+                            <label class="role-label">اختر نوع الحساب</label>
+                            <div class="role-options">
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="student" checked>
+                                    <div class="role-card">
+                                        <i class="fas fa-user-graduate"></i>
+                                        <span>طالب</span>
+                                    </div>
+                                </label>
+                                <label class="role-option">
+                                    <input type="radio" name="role" value="teacher">
+                                    <div class="role-card">
+                                        <i class="fas fa-chalkboard-teacher"></i>
+                                        <span>معلم</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label for="signupName">
+                                <i class="fas fa-user"></i>
+                                الاسم الكامل
+                            </label>
+                            <input 
+                                type="text" 
+                                id="signupName" 
+                                name="fullName" 
+                                placeholder="أدخل اسمك الكامل"
+                                required
+                            >
+                            <span class="error-message" id="signupNameError"></span>
+                        </div>
+                        
+                        <!-- Email Input -->
+                        <div class="form-group">
+                            <label for="signupEmail">
+                                <i class="fas fa-envelope"></i>
+                                البريد الإلكتروني
+                            </label>
+                            <input 
+                                type="email" 
+                                id="signupEmail" 
+                                name="email" 
+                                placeholder="أدخل بريدك الإلكتروني"
+                                required
+                            >
+                            <span class="error-message" id="signupEmailError"></span>
+                        </div>
+                        
+                        <!-- Password Input -->
+                        <div class="form-group">
+                            <label for="signupPassword">
+                                <i class="fas fa-lock"></i>
+                                كلمة المرور
+                            </label>
+                            <div class="password-input">
+                                <input 
+                                    type="password" 
+                                    id="signupPassword" 
+                                    name="password" 
+                                    placeholder="أدخل كلمة المرور (8 أحرف على الأقل)"
+                                    minlength="8"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="signupPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="signupPasswordError"></span>
+                        </div>
+                        
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="signupConfirmPassword">
+                                <i class="fas fa-lock"></i>
+                                تأكيد كلمة المرور
+                            </label>
+                            <div class="password-input">
+                                <input 
+                                    type="password" 
+                                    id="signupConfirmPassword" 
+                                    name="confirmPassword" 
+                                    placeholder="أعد إدخال كلمة المرور"
+                                    required
+                                >
+                                <button type="button" class="toggle-password" data-target="signupConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="error-message" id="signupConfirmPasswordError"></span>
+                        </div>
+                        
+                        <!-- Terms Checkbox -->
+                        <div class="form-group">
+                            <label class="checkbox-label terms-label">
+                                <input type="checkbox" name="terms" id="signupTerms" required>
+                                <span>أوافق على <a href="#">شروط الاستخدام</a> و <a href="#">سياسة الخصوصية</a></span>
+                            </label>
+                            <span class="error-message" id="signupTermsError"></span>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-glow btn-full">
+                            <i class="fas fa-user-plus"></i>
+                            <span>إنشاء الحساب</span>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>لديك حساب بالفعل؟ <a href="#" data-navigate="login">تسجيل الدخول</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE CHAT PAGE ==================== -->
+    <section id="interactiveChatPage" class="page">
+        <div class="container">
+            <div class="chat-page-header">
+                <h2><i class="fas fa-comments"></i> الدردشة التفاعلية</h2>
+                <p>اختر الصف والمادة للمشاركة في النقاش</p>
+            </div>
+
+            <!-- Selection Container -->
+            <div class="selection-container" id="chatSelectionContainer">
+                <!-- Grade Selection (First Secondary Only) -->
+                <div class="selection-step" id="chatGradeStep">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3>اختر الصف الدراسي</h3>
+                    </div>
+                    <div class="selection-grid">
+                        <button class="selection-card" data-grade="secondary1" data-name="الصف الأول الثانوي">
+                            <div class="selection-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h4>الصف الأول الثانوي</h4>
+                            <p>المرحلة الثانوية - الصف الأول</p>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Subject Selection -->
+                <div class="selection-step" id="chatSubjectStep" style="display: none;">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3>اختر المادة الدراسية</h3>
+                        <button class="btn-back" data-back="grade">
+                            <i class="fas fa-arrow-right"></i>
+                            رجوع
+                        </button>
+                    </div>
+                    <div class="selection-grid subjects-grid" id="chatSubjectGrid">
+                        <!-- Subjects will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Chat Room -->
+            <div class="subject-chat-room" id="subjectChatRoom" style="display: none;">
+                <div class="chat-room-header">
+                    <button class="btn-back" id="btnBackToSubjects">
+                        <i class="fas fa-arrow-right"></i>
+                        رجوع للمواد
+                    </button>
+                    <div class="chat-room-info">
+                        <h3 id="chatRoomSubjectName">المادة</h3>
+                        <span id="chatRoomGradeName">الصف الأول الثانوي</span>
+                    </div>
+                    <div class="chat-room-stats">
+                        <span><i class="fas fa-question-circle"></i> <span id="questionCount">0</span> سؤال</span>
+                    </div>
+                </div>
+
+                <!-- Questions Container -->
+                <div class="questions-container" id="questionsContainer">
+                    <!-- Questions will be loaded dynamically -->
+                </div>
+
+                <!-- Ask Question Form -->
+                <div class="ask-question-section">
+                    <div class="ask-question-form">
+                        <textarea 
+                            id="questionInput" 
+                            placeholder="اكتب سؤالك هنا..."
+                            rows="2"
+                        ></textarea>
+                        <button class="btn btn-primary btn-glow" id="btnPostQuestion">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>نشر السؤال</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MY ACCOUNT PAGE ==================== -->
+    <section id="myAccountPage" class="page">
+        <div class="container">
+            <div class="account-container">
+                <div class="account-card">
+                    <div class="account-header">
+                        <div class="account-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <h2>حسابي</h2>
+                        <p>معلومات حسابك الشخصية</p>
+                    </div>
+                    
+                    <div class="account-info" id="accountInfo">
+                        <!-- Account info will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        <!-- ==================== ABOUT PAGE ==================== -->
+    <section id="aboutPage" class="page">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-header">
+                    <div class="about-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <h2>عن المنصة</h2>
+                    <p>تعرف على SQS Platform ورسالتنا التعليمية</p>
+                </div>
+            
+                <div class="about-content">
+                    <div class="about-section">
+                        <div class="about-section-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3>المشكلة التعليمية</h3>
+                        <p>
+                        يواجه الطلاب صعوبة كبيرة في الحصول على إجابات واضحة وموثوقة لأسئلتهم الدراسية. 
+                        فالعديد منهم لا يجدون الوقت الكافي للاستفسار من معلميهم، 
+                        كما أن المصادر المتاحة على الإنترنت قد تكون غير دقيقة أو معقدة.
+                        هذه الفجوة بين السؤال والإجابة تؤثر سلباً على أداء الطلاب وتحصيلهم العلمي.
+                        </p>
+                    </div>
+                
+                    <div class="about-section">
+                        <div class="about-section-icon solution-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>حل SQS Platform</h3>
+                        <p>
+                        توفر منصة SQS بيئة تفاعلية بسيطة تمكن الطلاب من طرح أسئلتهم بسهولة والحصول على إجابات     
+                        واضحة من معلميهم وزملائهم. المنصة مصممة لتكون سهلة الاستخدام ومتاحة للجميع،     
+                        مما يساعد على سد الفجوة المعرفية ودعم العملية التعليمية.    
+                        </p>
+                    </div>
+                
+                    <div class="about-features">
+                        <div class="about-feature-card">
+                            <i class="fas fa-question-circle"></i>
+                            <h4>طرح الأسئلة بسهولة</h4>
+                            <p>واجهة بسيطة تمكن أي طالب من طرح سؤاله في ثوانٍ</p>
+                        </div>
+                        <div class="about-feature-card">
+                            <i class="fas fa-share-alt"></i>
+                            <h4>تبادل المعرفة</h4>
+                            <p>تعاون بين الطلاب ومشاركة المعرفة في بيئة تفاعلية</p>
+                        </div>
+                        <div class="about-feature-card">
+                            <i class="fas fa-user-graduate"></i>
+                            <h4>دعم التعلم الذاتي</h4>
+                            <p>تمكين الطلاب من تعلم المزيد من خلال الأسئلة والأجوبة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NOTIFICATIONS ==================== -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <!-- ==================== LOADING OVERLAY ==================== -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>جاري التحميل...</p>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <!-- Footer section added with platform info, navigation links, and copyright -->
+    <footer class="footer" id="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <!-- SQS Platform Section -->
+                <div class="footer-section footer-about">
+                    <h3 class="footer-title">SQS Platform</h3>
+                    <p class="footer-description">
+                        منصة تفاعلية تجمع الطلاب والمعلمين في بيئة تعليمية متكاملة، حيث يمكنك طرح الأسئلة والحصول على الإجابات من معلميك وزملائك بسهولة ويسر
+                    </p>
+                </div>
+                
+                <!-- Footer Navigation Links -->
+                <div class="footer-section footer-nav">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <nav class="footer-links">
+                        <!-- Copied navbar links with unique IDs for footer -->
+                        <a href="#" class="footer-link" data-page="welcome" id="footerNavHome">الرئيسية</a>
+                        <a href="#" class="footer-link" data-page="interactiveChat" id="footerNavInteractiveChat" style="display: none;">الدردشة التفاعلية</a>
+                        <a href="#" class="footer-link" data-page="myAccount" id="footerNavMyAccount" style="display: none;">حسابي</a>
+                        <a href="#" class="footer-link" data-page="login" id="footerNavLogin">تسجيل الدخول</a>
+                        <a href="#" class="footer-link" data-page="signup" id="footerNavSignup">إنشاء حساب</a>
+                        <!-- Contact Us link -->
+                        <a href="mailto:samiradham044@email.com" class="footer-link footer-contact-link" id="footerNavContact">تواصل معنا</a>
+                    </nav>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom / Copyright -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © SQS Platform . All rights reserved.
+                </p>
+                <p class="footer-credit">
+                    Built with <i class="fas fa-heart"></i> BY | ENG/Adham
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
